@@ -1,0 +1,15 @@
+[project]
+name = "industrial-rag"
+version = "0.1.0"
+description = "Enterprise-grade industrial RAG service"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn>=0.30.0",
+  "pydantic>=2.8.0",
+  "numpy>=1.26.0",
+  "python-multipart>=0.0.9"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
