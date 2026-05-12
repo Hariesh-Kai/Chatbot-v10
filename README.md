@@ -1,23 +1,31 @@
 # Industrial RAG (Reference Implementation)
 
-This repository now contains an executable baseline implementation of the industrial RAG architecture described in `INDUSTRIAL_RAG_ARCHITECTURE.md`.
-
-## Run
+## Backend
 
 ```bash
 pip install -e .
 uvicorn app.api.main:app --reload
 ```
 
-## Test
+## Frontend (React + Vite + Tailwind)
 
 ```bash
-python -m pytest -q
+cd frontend
+npm install
+npm run dev
 ```
 
-## Implemented now
+Open `http://localhost:5173`.
 
-- FastAPI service with ingestion + query endpoints.
-- Structure-aware chunking with metadata.
-- Hybrid in-memory retrieval (BM25-style + cosine blending).
-- Grounded answer builder with citation objects and low-confidence fallback.
+## Features
+
+- Chat page with conversation history sidebar.
+- Dashboard page for conversation analytics.
+- Settings page with OpenRouter API key + model.
+- Upload control included in UI (backend currently needs multipart ingest endpoint for real file upload).
+
+
+## Ingestion formats (current baseline)
+
+- PDF, DOCX, XLSX, CSV, TXT, MD, HTML, XML.
+- Scanned/image-only PDFs are not OCRed in this baseline and will return a clear error message.

@@ -3,7 +3,7 @@ export async function uploadDocument(file, documentId) {
   form.append('document_id', documentId)
   form.append('file', file)
   const res = await fetch('/v1/documents/upload', { method: 'POST', body: form })
-  if (!res.ok) throw new Error('Upload failed')
+  if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.detail || 'Upload failed') }
   return res.json()
 }
 
